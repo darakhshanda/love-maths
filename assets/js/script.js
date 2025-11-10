@@ -6,25 +6,29 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             if (this.getAttribute("data-type") === "submit") {
                 checkAnswer();
-                //set operands to 0
-                document.getElementById("operand1").innerText = 0;
-                document.getElementById("operand2").innerText = 0;
-                //clear answer box and focus
-                document.getElementById("answer-box").value = "";
-                document.getElementById("answer-box").focus();
-                
+                             
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
             }
         });
+        document.getElementById("answer-box").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        });
         runGame("addition");
-    }
+    };
     /**
      * The main game "loop", called when the script is first loaded
      * and after the user's answer has been processed
      */
 function runGame( gameType) {
+          //clear answer box and focus on it
+    document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
+   
+               
     // Generate two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
@@ -38,7 +42,7 @@ function runGame( gameType) {
         displayDivisionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
-        throw `Unknown game type: ${gameType}. Aborting!`;
+        throw new Error(`Unknown game type: ${gameType}. Aborting!`);
     }
 }
 /**
