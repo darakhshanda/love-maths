@@ -12,10 +12,17 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+    /**
+     * The main game "loop", called when the script is first loaded
+     * and after the user's answer has been processed
+     */
 function runGame() {
-    console.log("Hello, World!");
+    // Generate two random numbers between 1 and 25
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 }
 function checkAnswer(){
+    runGame()
     return true;
 }
 function calculateCorrectAnswer() {
@@ -28,25 +35,20 @@ function incrementWrongAnswer() {
     let currentWrongScore = parseInt(document.getElementById("wrong-score").innerText);
 }
 function displayAdditionQuestion() {
-    let num1 = Math.floor(Math.random() * 25) + 1;
-    let num2 = Math.floor(Math.random() * 25) + 1;
+    
     document.getElementById("question").innerText = `${num1} + ${num2}`;
 }
 function displaySubtractionQuestion() {
-    let num1 = Math.floor(Math.random() * 25) + 1;
-    let num2 = Math.floor(Math.random() * 25) + 1;
+    
     document.getElementById("question").innerText = `${num1} - ${num2}`;
 }   
 function displayMultiplicationQuestion() {
-    let num1 = Math.floor(Math.random() * 12) + 1;
-    let num2 = Math.floor(Math.random() * 12) + 1;
+   
     document.getElementById("question").innerText = `${num1} * ${num2}`;
 
 }
 function displayDivisionQuestion() {
-    let num1 = Math.floor(Math.random() * 12) + 1;  
-    let num2 = Math.floor(Math.random() * 12) + 1;  
-    let dividend = num1 * num2; 
+   
     document.getElementById("question").innerText = `${dividend} / ${num1}`;
 }
 });
